@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,26 +22,18 @@ Route::get('/jobs', function () {
     return 'available jobs';
 })->name('jobs');
 
-Route::match(['get', 'post'],'/submit', function () {
-    return 'submitted';
-});
-
-Route::get('/test', function() {
-    $url = route('jobs');
-    return "<a href='$url'>click here</a>";
-});
-
-Route::get('/api/users', function() {
+Route::get('/test', function(Request $request) {
     return [
-        'name' => 'John Smith',
-        'email' => 'john@smith.com',
+        'method' => $request->method(),
+        'url' => $request->url(),
+        'path' => $request->path(),
+        'fullUrl' => $request->fullUrl(),
+        'ip' => $request->ip(),
+        'userAgent' => $request->userAgent(),
+        'header' => $request->header(),
     ];
 });
 
-Route::get('/posts/{id}', function(string $id) {
-    return 'Post ' . $id;
-});
-
-Route::get('/posts/{id}/comments/{commentId}', function(string $id, string $commentId) {
-    return 'Post ' . $id . ' comments ' . $commentId;
+Route::get('/users', function(Request $request) {
+    return $request->except(['name']);
 });
