@@ -22,18 +22,31 @@ Route::get('/jobs', function () {
     return 'available jobs';
 })->name('jobs');
 
-Route::get('/test', function(Request $request) {
-    return [
-        'method' => $request->method(),
-        'url' => $request->url(),
-        'path' => $request->path(),
-        'fullUrl' => $request->fullUrl(),
-        'ip' => $request->ip(),
-        'userAgent' => $request->userAgent(),
-        'header' => $request->header(),
-    ];
+// Route::get('/test', function(Request $request) {
+//     return [
+//         'method' => $request->method(),
+//         'url' => $request->url(),
+//         'path' => $request->path(),
+//         'fullUrl' => $request->fullUrl(),
+//         'ip' => $request->ip(),
+//         'userAgent' => $request->userAgent(),
+//         'header' => $request->header(),
+//     ];
+// });
+
+// Route::get('/users', function(Request $request) {
+//     return $request->except(['name']);
+// });
+
+Route::get('/test', function () {
+    return response()->json(['name' => 'Sayed'])->cookie('name', 'John Doe');
 });
 
-Route::get('/users', function(Request $request) {
-    return $request->except(['name']);
+Route::get('/notfound', function () {
+    return response('page not found', 404);
+});
+
+Route::get('/read-cookie', function(Request $request) {
+    $cookieValue = $request->cookie('name');
+    return response()->json(['cookie'=>$cookieValue]);
 });
