@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -14,39 +16,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/jobs', function () {
-    return 'available jobs';
-})->name('jobs');
-
-// Route::get('/test', function(Request $request) {
-//     return [
-//         'method' => $request->method(),
-//         'url' => $request->url(),
-//         'path' => $request->path(),
-//         'fullUrl' => $request->fullUrl(),
-//         'ip' => $request->ip(),
-//         'userAgent' => $request->userAgent(),
-//         'header' => $request->header(),
-//     ];
-// });
-
-// Route::get('/users', function(Request $request) {
-//     return $request->except(['name']);
-// });
-
-Route::get('/test', function () {
-    return response()->json(['name' => 'Sayed'])->cookie('name', 'John Doe');
-});
-
-Route::get('/notfound', function () {
-    return response('page not found', 404);
-});
-
-Route::get('/read-cookie', function(Request $request) {
-    $cookieValue = $request->cookie('name');
-    return response()->json(['cookie'=>$cookieValue]);
-});
+Route::get('/', [HomeController::class,'index']);
+Route::get('/jobs', [JobController::class, 'index'] );
+Route::get('/jobs/create', [JobController::class, 'create']);
