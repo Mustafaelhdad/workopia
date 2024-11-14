@@ -8,18 +8,33 @@ use Illuminate\Contracts\View\View;
 
 class JobController extends Controller
 {
-    public function index() { 
+    public function index()
+    {
         $title = 'Available Jobs';
         $jobs = [
-        'web developer',
-        'desinger',
-        'mobile developer',
-        'python developer'
+            'web developer',
+            'desinger',
+            'mobile developer',
+            'python developer'
         ];
 
-    return view('jobs.index', compact('title', 'jobs'));}
+        return view('jobs.index', compact('title', 'jobs'));
+    }
 
-public function create(): View|Factory
+    public function create(): View|Factory
     {
         return view('jobs.create');
-    }}
+    }
+
+    public function show(string $id)
+    {
+        return "Showing $id";
+    }
+
+    public function store(Request $request) {
+        $title = $request->input("title");
+        $description = $request->input("description");
+
+        return "Title: $title, Description: $description";
+    }
+}
