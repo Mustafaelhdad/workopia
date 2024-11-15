@@ -9,7 +9,6 @@
 
 		<body>
 				<h1>Availabe Jobs</h1>
-
 				<form action="/jobs" method="POST">
 						@csrf
 						<input name="title" type="text" placeholder="title">

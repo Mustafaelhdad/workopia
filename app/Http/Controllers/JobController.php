@@ -3,38 +3,68 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
 
 class JobController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $title = 'Available Jobs';
         $jobs = [
             'web developer',
-            'desinger',
-            'mobile developer',
-            'python developer'
+            'designer',
+            'analyst',
+            'tester'
         ];
 
-        return view('jobs.index', compact('title', 'jobs'));
+        return view('jobs.index', compact('jobs'));
     }
 
-    public function create(): View|Factory
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
         return view('jobs.create');
     }
 
-    public function show(string $id)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        return "Showing $id";
     }
 
-    public function store(Request $request) {
-        $title = $request->input("title");
-        $description = $request->input("description");
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        return 'show';
+    }
 
-        return "Title: $title, Description: $description";
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }
