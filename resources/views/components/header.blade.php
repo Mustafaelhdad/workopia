@@ -4,11 +4,16 @@
             <a href={{ url("/") }}>Workopia</a>
         </h1>
         <nav class="hidden items-center space-x-4 md:flex">
-            <a class="py-2 text-white hover:underline" href={{ url("/jobs") }}>All Jobs</a>
-            <a class="py-2 text-white hover:underline" href={{ url("/saved") }}>Saved Jobs</a>
-            <a class="py-2 text-white hover:underline" href={{ url("/login") }}>Login</a>
-            <a class="py-2 text-white hover:underline" href={{ url("/register") }}>Register</a>
-            <a class="py-2 text-white hover:underline" href={{ url("/dashboard") }}>
+            <a class="{{ request()->is("jobs") ? "text-yellow-500 font-bold" : "" }} py-2 text-white hover:underline"
+                href={{ url("/jobs") }}>All Jobs</a>
+            <a class="{{ request()->is("saved") ? "text-yellow-500 font-bold" : "" }} py-2 text-white hover:underline"
+                href={{ url("/saved") }}>Saved Jobs</a>
+            <a class="{{ request()->is("login") ? "text-yellow-500 font-bold" : "" }} py-2 text-white hover:underline"
+                href={{ url("/login") }}>Login</a>
+            <a class="{{ request()->is("register") ? "text-yellow-500 font-bold" : "" }} py-2 text-white hover:underline"
+                href={{ url("/register") }}>Register</a>
+            <a class="{{ request()->is("dashboard") ? "text-yellow-500 font-bold" : "" }} py-2 text-white hover:underline"
+                href={{ url("/dashboard") }}>
                 <i class="fa fa-gauge mr-1"></i> Dashboard
             </a>
             <a class="rounded bg-yellow-500 px-4 py-2 text-black transition duration-300 hover:bg-yellow-600 hover:shadow-md"
