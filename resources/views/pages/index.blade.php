@@ -1,10 +1,6 @@
 
-@extends('layout')
+<x-layout>
+	<x-slot name="title">Workopia | Find and list jobs</x-slot>
 
-@section('title')
-Home
-@endsection
-
-@section('content')
-				<h1>Welcome to workopia!</h1>
-@endsection
+		<h1>Welcome to workopia!</h1>
+</x-layout>
