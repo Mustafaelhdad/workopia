@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout')
 
-		<head>
-				<meta charset="UTF-8">
-				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>Jobs</title>
-		</head>
+@section('title')
+Create Job
+@endsection
 
-		<body>
-				<h1>Availabe Jobs</h1>
+@section('content')
+				<h1>Create new job</h1>
 				<form action="/jobs" method="POST">
 						@csrf
 						<input name="title" type="text" placeholder="title">
 						<input name="description" type="text" placeholder="description">
 						<button type="submit">Submit</button>
 				</form>
-		</body>
-
-</html>
+@endsection
