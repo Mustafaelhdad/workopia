@@ -13,11 +13,7 @@
             <x-nav-link url="/dashboard" :active='request()->is("dashboard")' icon="gauge">
                 Dashboard
             </x-nav-link>
-            <a class="rounded bg-yellow-500 px-4 py-2 text-black transition duration-300 hover:bg-yellow-600 hover:shadow-md"
-                href={{ url("/jobs/create") }}>
-                <i class="fa fa-edit"></i> Create Job
-            </a>
-
+            <x-button-link url="/jobs/create" icon='edit'>Create Job</x-button-link>
         </nav>
 
         <button class="flex items-center text-white md:hidden" id="hamburger">
