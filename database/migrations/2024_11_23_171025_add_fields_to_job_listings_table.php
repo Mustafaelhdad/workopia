@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         // clear table data
-        DB::table("job_listings")->truncate();
+        // DB::table("job_listings")->truncate();
 
         Schema::table('job_listings', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->after('id');
