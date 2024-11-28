@@ -22,7 +22,7 @@ class JobFactory extends Factory
             'title' => $this->faker->jobTitle(),
             'description' => $this->faker->paragraphs(2, true),
             'salary' => $this->faker->numberBetween(40000, 120000),
-            'tags'  => implode(', ', $this->faker->words(3)),
+            'tags' => implode(', ', $this->faker->words(3)),
             'job_type' => $this->faker->randomElement(['Full-Time', 'Part-Time', 'Contract']),
             'remote' => $this->faker->boolean(),
             'requirements' => $this->faker->sentences(3, true),
@@ -36,7 +36,7 @@ class JobFactory extends Factory
             'company_name' => $this->faker->company(),
             'company_description' => $this->faker->paragraphs(2, true),
             'company_logo' => $this->faker->imageUrl(100, 100, 'business', true, 'logo'),
-            'company_website' => $this->faker->url()
+            'company_website' => $this->faker->url(),
         ];
     }
 }
