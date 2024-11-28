@@ -91,7 +91,7 @@ class JobController extends Controller
 
     // @desc    Update job listing
     // @route   PUT /jobs/{$id}
-    public function update(Request $request, Job $job): string
+    public function update(Request $request, Job $job): RedirectResponse
     {
         // Check if user is authorized
         // $this->authorize('update', $job);
