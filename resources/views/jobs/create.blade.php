@@ -5,7 +5,7 @@
         <h2 class="mb-4 text-center text-4xl font-bold">
             Create Job Listing
         </h2>
-        <form method="POST" action="/jobs" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("jobs.index") }}" enctype="multipart/form-data">
             @csrf
             <h2 class="mb-6 text-center text-2xl font-bold text-gray-500">
                 Job Info
@@ -88,7 +88,7 @@
 
             <x-inputs.text id='state' name="state" label="State" placeholder='NY' />
 
-            <x-inputs.text id='zipcode' name="city" label="ZIP Code" placeholder='12201' />
+            <x-inputs.text id='zipcode' name="zipcode" label="ZIP Code" placeholder='12201' />
 
             <h2 class="mb-6 text-center text-2xl font-bold text-gray-500">
                 Company Info
@@ -119,7 +119,7 @@
                     class="@error("company_logo") border-red-500 @enderror w-full rounded border px-4 py-2 focus:outline-none"
                     id="company_logo" name="company_logo" type="file" />
 
-                @error("company_logos")
+                @error("company_logo")
                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                 @enderror
             </div>

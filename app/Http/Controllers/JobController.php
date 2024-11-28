@@ -35,29 +35,38 @@ class JobController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'salary' => 'required|numeric|min:0',
-            'requirements' => 'nullable|string|max:500',
-            'benefits' => 'nullable|string|max:500',
-            'tags' => 'nullable|string|max:255',
-            'job_type' => 'required|string|in:Full-Time,Part-Time,Contract,Temporary,Internship,Volunteer,On-Call',
+            'salary' => 'required|integer',
+            'tags' => 'nullable|string',
+            'job_type' => 'required|string',
             'remote' => 'required|boolean',
-            'address' => 'nullable|string|max:255',
-            'city' => 'required|string|max:100',
-            'state' => 'required|string|max:100',
-            'zipcode' => 'nullable|string|max:10',
-            'company_name' => 'required|string|max:255',
-            'company_description' => 'nullable|string|max:500',
-            'company_website' => 'nullable|url|max:255',
-            'contact_phone' => 'nullable|string|max:20',
-            'contact_email' => 'required|email|max:255',
-            'company_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'requirements' => 'nullable|string',
+            'benefits' => 'nullable|string',
+            'address' => 'nullable|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'zipcode' => 'nullable|string',
+            'contact_email' => 'required|string',
+            'contact_phone' => 'nullable|string',
+            'company_name' => 'required|string',
+            'company_description' => 'nullable|string',
+            'company_logo' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'company_website' => 'nullable|url'
         ]);
 
-        $validatedData['user_id'] = 1;
+        // $validatedData['user_id'] = 1;
+
+        // Check for image
+        // if ($request->hasFile('company_logo')) {
+        //     // Store the file and get path
+        //     $path = $request->file('company_logo')->store('logos', 'public');
+
+        //     // Add path to validated data
+        //     $validatedData['company_logo'] = $path;
+        // }
 
         Job::create($validatedData);
 
-        return redirect()->route('jobs.index')->with('success', 'Job listing created successfully');
+        return redirect()->route('jobs.index');
     }
 
     /**

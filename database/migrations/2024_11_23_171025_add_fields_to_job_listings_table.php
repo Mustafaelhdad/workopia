@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -12,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // clear table data
-        // DB::table("job_listings")->truncate();
+        // Clear table data
+        DB::table('job_listings')->truncate();
 
         Schema::table('job_listings', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->after('id');
 
             $table->integer('salary');
             $table->string('tags')->nullable();
-            $table->enum('job_type', ['Full-Time', 'Part-Time', 'Contract', 'Temporary', 'Internship', 'Volunteer', 'On-Call']);
+            $table->enum('job_type', ['Full-Time', 'Part-Time', 'Contract', 'Temporary', 'Internship', 'Volunteer', 'On-Call'])->default('Full-Time');
             $table->boolean('remote')->default(false);
             $table->text('requirements')->nullable();
             $table->text('benefits')->nullable();
@@ -35,7 +34,7 @@ return new class extends Migration
             $table->string('company_logo')->nullable();
             $table->string('company_website')->nullable();
 
-            // add user foreign key constraint
+            // Add user foriegn key constraint
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
