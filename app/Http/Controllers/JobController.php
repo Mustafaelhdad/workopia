@@ -11,13 +11,14 @@ use App\Models\Job;
 
 class JobController extends Controller
 {
-    use AuthorizesRequests;
+    // use AuthorizesRequests;
 
     // @desc    Show all job listings
     // @route   GET /jobs
     public function index(): View
     {
-        $jobs = Job::latest()->paginate(9);
+        // $jobs = Job::latest()->paginate(9);
+        $jobs = Job::all();
         return view('jobs.index')->with('jobs', $jobs);
     }
 
@@ -83,7 +84,7 @@ class JobController extends Controller
     public function edit(Job $job): View
     {
         // Check if user is authorized
-        $this->authorize('update', $job);
+        // $this->authorize('update', $job);
 
         return view('jobs.edit')->with('job', $job);
     }
@@ -93,7 +94,7 @@ class JobController extends Controller
     public function update(Request $request, Job $job): string
     {
         // Check if user is authorized
-        $this->authorize('update', $job);
+        // $this->authorize('update', $job);
 
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
