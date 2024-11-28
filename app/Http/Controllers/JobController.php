@@ -140,7 +140,7 @@ class JobController extends Controller
     public function destroy(Job $job): RedirectResponse
     {
         // Check if user is authorized
-        $this->authorize('delete', $job);
+        // $this->authorize('delete', $job);
 
         // If logo, then delete it
         if ($job->company_logo) {
