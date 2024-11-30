@@ -26,4 +26,14 @@ class LoginController extends Controller
         // if auth fails, redirect back with error
         return back()->withErrors(['email' => 'The provided credentials are invalid'])->onlyInput('email');
     }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
 }
