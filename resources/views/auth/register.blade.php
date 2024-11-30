@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="mx-auto mt-12 w-full rounded-lg bg-white p-8 py-12 shadow-md md:max-w-xl">
+    <div class="mx-auto mt-12 w-full max-w-sm rounded-lg bg-white p-8 py-12 shadow-md md:max-w-xl">
         <h2 class="mb-4 text-center text-4xl font-bold">Register</h2>
 
         <form method="POST" action="{{ route('register.store') }}">
