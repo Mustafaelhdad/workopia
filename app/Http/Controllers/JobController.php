@@ -11,7 +11,7 @@ use App\Models\Job;
 
 class JobController extends Controller
 {
-    // use AuthorizesRequests;
+    use AuthorizesRequests;
 
     // @desc    Show all job listings
     // @route   GET /jobs
@@ -94,7 +94,7 @@ class JobController extends Controller
     public function update(Request $request, Job $job): RedirectResponse
     {
         // Check if user is authorized
-        // $this->authorize('update', $job);
+        $this->authorize('update', $job);
 
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
@@ -140,7 +140,7 @@ class JobController extends Controller
     public function destroy(Job $job): RedirectResponse
     {
         // Check if user is authorized
-        // $this->authorize('delete', $job);
+        $this->authorize('delete', $job);
 
         // If logo, then delete it
         if ($job->company_logo) {
