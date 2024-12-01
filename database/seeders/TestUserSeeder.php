@@ -13,9 +13,9 @@ class TestUserSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
-        User::create(
+        $user = User::create(
             [
                 'name' => 'test user',
                 'email' => 'test@gmail.com',
@@ -23,5 +23,7 @@ class TestUserSeeder extends Seeder
                 'password' => Hash::make('test1234')
             ]
         );
+
+        return $user;
     }
 }
