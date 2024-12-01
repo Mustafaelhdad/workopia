@@ -11,3 +11,8 @@
 .hero {
     background-image: url("../images/hero.jpg");
 }
+
+#applicant-form {
+    position: relative;
+    z-index: 2;
+}

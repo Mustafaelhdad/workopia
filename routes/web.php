@@ -25,7 +25,7 @@ use Illuminate\Http\Request;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-// Route::resource('jobs', JobController::class);
+Route::get('/jobs/search', [JobController::class, 'search'])->name('jobs.search');
 Route::resource('jobs', JobController::class)->middleware('auth')->only(['create', 'update', 'destroy', 'edit']);
 Route::resource('jobs', JobController::class)->except(['create', 'update', 'destroy', 'edit']);
 

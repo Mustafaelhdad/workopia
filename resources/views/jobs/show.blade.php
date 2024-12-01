@@ -122,9 +122,9 @@
                 @endauth
             </div>
 
-            <div class="mt-6 rounded-lg bg-white p-6 shadow-md">
+            {{-- <div class="mt-6 rounded-lg bg-white p-6 shadow-md">
                 <div id="map"></div>
-            </div>
+            </div> --}}
         </section>
 
         <aside class="rounded-lg bg-white p-3 shadow-md">
