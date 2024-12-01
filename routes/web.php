@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboarController;
+use App\Http\Controllers\BookmarkController;
 use App\Http\Middleware\LogRequest;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -37,3 +38,8 @@ Route::middleware('guest')->group(function () {
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboarController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
+
+
+Route::middleware('auth')->group(function () {
+  Route::get('/bookmarks', [BookmarkController::class, 'index'])->name('bookmarks.index');
+});
