@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Job;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -12,8 +14,38 @@ class BookmarkController extends Controller
     {
         $user = Auth::user();
 
-        $bookmarks = $user->bookmarkedJobs()->paginate(9);
+        $bookmarks = $user->bookmarkedJobs()->orderBy('job_user_bookmarks.created_at', 'desc')->paginate(9);
 
         return view('jobs.bookmarked')->with('bookmarks', $bookmarks);
+    }
+
+    public function store(Job $job): RedirectResponse
+    {
+        $user = Auth::user();
+
+        // check if the job is already bookmarked
+        if ($user->bookmarkedJobs()->where('job_id', $job->id)->exists()) {
+            return back()->with('success', 'Job is already bookmarked');
+        }
+
+        // create new bookmark
+        $user->bookmarkedJobs()->attach(($job->id));
+
+        return back()->with('success', 'Job bookmarked successfully');
+    }
+
+    public function destroy(Job $job): RedirectResponse
+    {
+        $user = Auth::user();
+
+        // check if the job is not bookmarked
+        if (!$user->bookmarkedJobs()->where('job_id', $job->id)->exists()) {
+            return back()->with('error', 'Job is not bookmarked');
+        }
+
+        // remove bookmark
+        $user->bookmarkedJobs()->detach(($job->id));
+
+        return back()->with('success', 'bookmark removed successfully');
     }
 }
