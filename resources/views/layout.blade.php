@@ -10,7 +10,7 @@
             crossorigin="anonymous" referrerpolicy="no-referrer" />
         @vite('resources/css/app.css')
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-        <script src="//unpkg.com/alpinejs" defer></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <title>{{ $title ?? 'Workopia | Find and list jobs' }}</title>
     </head>
 
